@@ -23,16 +23,17 @@
             background: var(--bg-gradient);
             color: var(--text-color);
             margin: 0;
-            padding: 20px;
+            padding: 16px;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            box-sizing: border-box;
         }
 
         .container {
             background-color: var(--card-bg);
-            padding: 35px;
+            padding: 24px;
             border-radius: 16px;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
             width: 100%;
@@ -49,16 +50,17 @@
 
         .image-container img {
             width: 100%;
-            max-height: 160px;
+            height: auto;
+            max-height: 150px;
             object-fit: cover;
             border-radius: 10px;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.08);
         }
 
         h1 {
-            font-size: 1.75rem;
-            margin-bottom: 20px;
+            font-size: 1.5rem;
+            margin-bottom: 16px;
             color: var(--primary-color);
             font-weight: 700;
             letter-spacing: -0.5px;
@@ -66,18 +68,21 @@
 
         .input-group {
             display: flex;
-            gap: 10px;
+            gap: 8px;
             margin-bottom: 15px;
+            flex-wrap: wrap; /* Garante responsividade em telas muito pequenas */
         }
 
         input[type="text"] {
             flex: 1;
-            padding: 12px 16px;
+            min-width: 180px;
+            padding: 12px 14px;
             border: 2px solid var(--border-color);
             border-radius: 8px;
             font-size: 1rem;
             outline: none;
             transition: all 0.3s ease;
+            box-sizing: border-box;
         }
 
         input[type="text"]:focus {
@@ -89,7 +94,7 @@
             background-color: var(--primary-color);
             color: white;
             border: none;
-            padding: 12px 20px;
+            padding: 12px 18px;
             border-radius: 8px;
             font-size: 1rem;
             font-weight: 600;
@@ -114,6 +119,7 @@
             margin-bottom: 10px;
             font-size: 1.1rem;
             letter-spacing: 0.5px;
+            box-sizing: border-box;
         }
 
         .btn-sortear:hover {
@@ -124,6 +130,7 @@
             width: 100%;
             background-color: var(--danger-color);
             margin-bottom: 20px;
+            box-sizing: border-box;
         }
 
         .btn-reiniciar:hover {
@@ -132,13 +139,13 @@
 
         .list-container {
             text-align: left;
-            margin-top: 25px;
+            margin-top: 20px;
             border-top: 2px solid var(--border-color);
             padding-top: 15px;
         }
 
         .list-container h3 {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: #4b5563;
             margin-bottom: 10px;
         }
@@ -162,14 +169,17 @@
 
         li {
             background-color: #f8fafc;
-            padding: 10px 14px;
+            padding: 10px 12px;
             border-radius: 6px;
             margin-bottom: 8px;
             border: 1px solid var(--border-color);
             font-weight: 500;
+            font-size: 0.95rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 10px;
+            word-break: break-word;
             transition: background-color 0.2s;
         }
 
@@ -180,21 +190,38 @@
         .resultado {
             margin-top: 20px;
             margin-bottom: 15px;
-            padding: 18px;
+            padding: 16px;
             background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
             border: 2px solid #34d399;
             border-radius: 10px;
-            font-size: 1.25rem;
+            font-size: 1.15rem;
             font-weight: bold;
             color: #065f46;
             display: none;
             box-shadow: 0 8px 20px rgba(16, 185, 129, 0.15);
             animation: popUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            word-break: break-word;
         }
 
         @keyframes popUp {
             0% { transform: scale(0.8); opacity: 0; }
             100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* Media Query para telas muito pequenas (Smartphones compactos) */
+        @media (max-width: 400px) {
+            .container {
+                padding: 16px;
+            }
+            h1 {
+                font-size: 1.3rem;
+            }
+            .input-group {
+                flex-direction: column;
+            }
+            .input-group button {
+                width: 100%;
+            }
         }
     </style>
 </head>
