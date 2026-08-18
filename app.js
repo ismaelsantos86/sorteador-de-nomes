@@ -41,10 +41,18 @@ function adicionarNome() {
 }
 
 function atualizaTela() {
+    // Cria uma cópia da lista ordenada alfabeticamente para não alterar 
+    // a ordem original de inserção (caso queira preservar, se não, pode usar lista.sort())
+    let listaOrdenada = [...lista].sort((a, b) => a.localeCompare(b, 'pt-BR'));
+
     let exibirNomes = "";
-    for (let i = 0; i < lista.length; i++) {
-        exibirNomes += `<li>${lista[i]}
-        <button onclick="removerNome(${i})" style="float: right; background: none; border: none; cursor: pointer; color: #ef4444; font-weight: bold;">❌</button></li>`;
+    for (let i = 0; i < listaOrdenada.length; i++) {
+        // Precisamos encontrar o índice real do elemento na lista original 
+        // para que o botão "X" remova a pessoa correta.
+        let indiceOriginal = lista.indexOf(listaOrdenada[i]);
+
+        exibirNomes += `<li>${listaOrdenada[i]}
+        <button onclick="removerNome(${indiceOriginal})" style="float: right; background: none; border: none; cursor: pointer; color: #ef4444; font-weight: bold;">❌</button></li>`;
     }
     document.getElementById('listaNomes').innerHTML = exibirNomes;
     document.getElementById('contador').innerHTML = lista.length;
